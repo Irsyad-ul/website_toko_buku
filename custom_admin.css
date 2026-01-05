@@ -1,0 +1,211 @@
+/* GLOBAL & LAYOUT RESET */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f9; /* Latar belakang lembut */
+    color: #333;
+    display: flex; /* Mengaktifkan layout flexbox untuk body */
+    min-height: 100vh;
+}
+* {
+    box-sizing: border-box;
+}
+
+/* SIDEBAR STYLING */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50; /* Dark Blue/Navy */
+    color: #ecf0f1;
+    padding: 20px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+.logo {
+    text-align: center;
+    padding: 10px 20px 30px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #4cd3c2; /* Warna aksen turquoise */
+}
+
+/* User Info */
+.user-info {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.user-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #bdc3c7;
+}
+.user-info strong {
+    display: block;
+    font-size: 1.1em;
+    color: white;
+    margin-top: 5px;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0 0 20px 0;
+}
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.95em;
+}
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    background-color: #34495e;
+    border-left: 5px solid #4cd3c2;
+    color: white;
+}
+.sidebar-menu li a i {
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+
+/* MAIN CONTENT STYLING */
+.content-wrapper {
+    flex-grow: 1;
+    padding: 30px;
+}
+.content-header h1 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Info Cards (Untuk mengganti Info Box AdminLTE) */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-3px);
+}
+.card-icon {
+    font-size: 2.5em;
+    float: right;
+    opacity: 0.3;
+}
+.card h4 {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+    color: #7f8c8d;
+}
+.card p {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+.card.buku p { color: #4cd3c2; }
+.card.pesanan p { color: #f39c12; }
+.card.customer p { color: #e74c3c; }
+
+/* Logout Button */
+.logout-btn {
+    padding: 10px 15px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    margin: 20px;
+    transition: background-color 0.3s;
+}
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive (Mobile View) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+    }
+    .user-info {
+        display: none; /* Sembunyikan info user di mobile */
+    }
+    .sidebar-menu {
+        display: flex;
+        overflow-x: auto; /* Scrollable menu */
+        padding: 0 10px;
+    }
+    .sidebar-menu li {
+        flex-shrink: 0;
+    }
+    .sidebar-menu li a {
+        padding: 10px 15px;
+    }
+    .content-wrapper {
+        padding: 20px;
+    }
+    .logo {
+        padding-top: 20px;
+    }
+
+    /* --- Styling Tambahan untuk Badge Notifikasi Admin --- */
+
+/* Pastikan elemen <li> memiliki position: relative jika Anda mau badge-nya di luar ikon/teks. 
+   Tapi karena kita ingin badge di dalam link <a>, kita buat <a> yang relative */
+.sidebar-menu li a.order-link {
+    position: relative; 
+    /* Agar ikon, badge, dan teks bisa diatur posisinya di dalam <a> */
+}
+
+.badge-notif-admin {
+    /* POSISI */
+    position: absolute;
+    top: 5px; /* Sesuaikan posisi vertikal */
+    right: 15px; /* Sesuaikan posisi horizontal di sebelah kanan link */
+    
+    /* VISUAL */
+    background-color: #e74c3c; /* Merah untuk notifikasi darurat */
+    color: white;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    
+    /* BENTUK */
+    border-radius: 50%;
+    padding: 4px 7px;
+    min-width: 15px; /* Pastikan angka besar tetap terlihat bulat */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Animasi ringan saat muncul */
+    animation: pulse 1.5s infinite; 
+}
+
+/* Efek pulse (denyutan) untuk menarik perhatian */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+}

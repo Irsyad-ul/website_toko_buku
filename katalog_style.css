@@ -1,0 +1,232 @@
+/* --- CSS Khusus Katalog (katalog_style.css) --- */
+
+/* General Layout for Content */
+.main-content {
+    padding: 20px;
+    max-width: 100%; /* Agar konten menyesuaikan content-wrapper */
+}
+
+/* Flash Message */
+.flash-message {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Filter Kategori (Dropdown) */
+.filter-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-container label {
+    font-weight: 600;
+    color: #555;
+}
+
+#kategori-select {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s;
+    min-width: 200px;
+}
+#kategori-select:hover {
+    border-color: #007bff;
+}
+
+/* --- Tambahan untuk Notifikasi Pop-up (katalog_style.css) --- */
+
+.flash-message {
+    /* Mengubah posisi menjadi fixed agar selalu terlihat di bagian atas */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Memposisikan di tengah */
+    z-index: 1000; /* Memastikan di atas semua elemen */
+    
+    /* Styling Visual */
+    padding: 15px 30px;
+    border-radius: 0 0 8px 8px; /* Sudut bawah melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: auto;
+    max-width: 500px;
+    font-size: 1.1em;
+    opacity: 0; /* Mulai tersembunyi */
+    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+.flash-success {
+    background-color: #28a745; /* Hijau Solid */
+    color: white;
+    border: none;
+}
+
+/* Class yang akan ditambahkan oleh JS untuk menampilkan notifikasi */
+.flash-message.show {
+    top: 20px; /* Jarak dari atas saat ditampilkan */
+    opacity: 1;
+}
+
+/* Buku List & Item (Grid) */
+.buku-list {
+    display: grid;
+    /* Responsive Grid: 280px minimum lebar per kolom */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+}
+.buku-item {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+.buku-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Gambar Buku */
+.buku-img-wrapper {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.buku-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.buku-item:hover .buku-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Detail Buku */
+.kategori-tag {
+    display: inline-block;
+    background-color: #e6f7ff;
+    color: #007bff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.buku-item h3 {
+    color: #343a40;
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    min-height: 40px; 
+}
+.buku-item p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.harga {
+    color: #28a745; 
+    font-weight: 700;
+    font-size: 1.2em;
+    margin: 15px 0;
+    display: block;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+.btn-detail, .btn-beli button {
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    flex-grow: 1;
+    text-align: center;
+}
+.btn-detail {
+    background: #007bff;
+    color: white;
+}
+.btn-detail:hover {
+    background: #0056b3;
+}
+
+.btn-beli button {
+    background: #ffc107; 
+    color: #333;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.btn-beli button:hover {
+    background: #e0a800;
+}
+
+.sidebar-menu li a.cart-link {
+    position: relative; 
+    /* Hilangkan properti justify-content: space-between jika ada, 
+       karena kita akan memosisikan badge secara absolut. */
+    display: flex; /* Untuk menyejajarkan ikon dan teks */
+    gap: 10px;
+}
+
+/* 2. Styling dan Positioning Badge Merah */
+.badge-icon-cart {
+    /* POSISI MUTLAK/ABSOLUTE */
+    position: absolute;
+    top: 5px;   /* Angkat ke atas */
+    left: 25px; /* Sesuaikan posisi agar menempel di atas ikon */
+    
+    /* STYLING VISUAL */
+    background-color: #dc3545; /* Merah */
+    color: white;
+    font-size: 0.7em; /* Ukuran lebih kecil */
+    font-weight: 700;
+    line-height: 1;
+    
+    /* Bentuk Lingkaran */
+    border-radius: 50%;
+    padding: 3px 6px;
+    min-width: 8px; /* Pastikan angka dua digit terlihat */
+    text-align: center;
+    border: 1px solid #ffffff; /* Border putih tipis agar menonjol */
+}
+
+/* 3. Menghilangkan margin pada teks menu agar tidak terdorong badge */
+.sidebar-menu li a span {
+    margin-right: 0; /* Pastikan teks tidak memiliki margin berlebih */
+}

@@ -1,0 +1,368 @@
+/* ================================================= */
+/* 1. STYLING LAYOUT DENGAN SIDEBAR */
+/* ================================================= */
+body {
+    display: flex; 
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5; /* Warna latar belakang halaman */
+    min-height: 100vh;
+}
+
+/* Sidebar Styling (Mengikuti standar dashboard) */
+.sidebar {
+    width: 250px; 
+    background: var(--secondary-color); /* Warna sidebar yang konsisten */
+    color: white;
+    padding: 20px 0;
+    flex-shrink: 0; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--accent-color, #4cd3c2); 
+}
+
+.sidebar .user-profile {
+    text-align: center;
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+.sidebar .user-profile .profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid white;
+}
+.sidebar .user-profile strong {
+    display: block;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.sidebar .user-profile small {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.sidebar .nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.sidebar .nav-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-menu a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left-color: var(--primary-color, #3498db); 
+}
+
+.sidebar .nav-menu a i {
+    margin-right: 10px;
+    width: 20px; 
+    text-align: center;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1; 
+    padding: 20px;
+    overflow-y: auto; 
+}
+
+/* Update original .container to fit inside main-content */
+.container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+/* Menghilangkan tautan kembali yang tidak diperlukan lagi karena ada sidebar */
+.back-link { display: none; }
+
+
+/* ================================================= */
+/* 2. STYLING KONTEN RIWAYAT (CUSTOM STYLES) */
+/* ================================================= */
+h1 {
+    color: var(--secondary-color); 
+    font-size: 2em;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Tabel Riwayat */
+.riwayat-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 25px;
+    overflow: hidden;
+    border-radius: 8px; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.riwayat-table th, .riwayat-table td {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.riwayat-table th {
+    background-color: var(--secondary-color); 
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.riwayat-table tbody tr {
+    background-color: var(--card-bg);
+    transition: background-color 0.3s ease;
+}
+
+.riwayat-table tbody tr:last-child td {
+    border-bottom: none; 
+}
+
+.riwayat-table tbody tr:hover {
+    background-color: var(--bg-light); 
+}
+
+/* Tombol Detail (btn-detail) */
+.btn-detail {
+    padding: 8px 15px;
+    background-color: var(--primary-color); 
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; 
+    font-size: 0.85em;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-detail:hover {
+    background-color: #2980b9; 
+    transform: translateY(-1px);
+}
+
+/* Tombol Hapus (btn-hapus) */
+.btn-hapus {
+    background-color: var(--danger-color); 
+    color: white; 
+    padding: 8px 15px; 
+    border-radius: 50px; 
+    font-size: 0.85em; 
+    font-weight: 600; 
+    text-decoration: none; 
+    margin-left: 5px;
+    display: inline-block;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-hapus:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Badge Status */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px; 
+    color: white;
+    font-weight: 700;
+    font-size: 0.75em;
+    display: inline-block;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Warna Status yang Disesuaikan */
+.status-Menunggu-Pembayaran { 
+    background-color: #f39c12; 
+    color: #333; 
+}
+.status-Diproses { 
+    background-color: var(--primary-color); 
+}
+.status-Dikirim { 
+    background-color: #2ecc71; 
+}
+.status-Selesai { 
+    background-color: #95a5a6; 
+}
+.status-Dibatalkan { 
+    background-color: var(--danger-color); 
+}
+
+/* Tampilan Riwayat Kosong */
+div[style*="margin-top: 50px"] {
+    padding: 50px;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+    margin-top: 50px !important;
+}
+
+div[style*="margin-top: 50px"] p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+}
+
+/* Tombol Mulai Belanja Sekarang */
+.btn-primary[style*="margin-top: 15px"] {
+    margin-top: 15px !important;
+    background-color: var(--accent-color); 
+    color: var(--secondary-color);
+}
+.btn-primary[style*="margin-top: 15px"]:hover {
+    background-color: #34c7b6; 
+    color: white;
+}
+
+/* Flash Message Success */
+p[style*="color: green"] { 
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+
+/* Flash Message Error */
+p[style*="color: red"] { 
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+
+/* ================================================= */
+/* 3. MEDIA QUERIES (RESPONSIVE) */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    body {
+        flex-direction: column; 
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar .user-profile {
+        display: none; 
+    }
+
+    .sidebar .nav-menu {
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 10px;
+    }
+
+    .sidebar .nav-menu a {
+        flex: 1 1 auto; 
+        padding: 10px;
+        text-align: center;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+    
+    .sidebar .nav-menu a.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary-color, #3498db);
+    }
+
+    .sidebar .nav-menu a i {
+        margin-right: 0;
+        display: block;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Mobile Table View (di bawah 600px) */
+@media (max-width: 600px) {
+    /* Tabel Responsif (Card List View) untuk Riwayat */
+    .riwayat-table, .riwayat-table tbody, .riwayat-table tr, .riwayat-table td { 
+        display: block; 
+        width: 100%; 
+    }
+    .riwayat-table thead { display: none; } /* Sembunyikan Header */
+    
+    .riwayat-table tr { 
+        margin-bottom: 15px; 
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .riwayat-table td {
+        text-align: right; 
+        padding-left: 50%; 
+        position: relative;
+        border-bottom: none; 
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .riwayat-table td::before {
+        /* Menambahkan Label (Header Kolom) */
+        font-weight: 600; 
+        text-align: left; 
+        color: var(--secondary-color);
+        position: absolute; 
+        left: 15px; 
+        width: 45%;
+    }
+
+    /* Menetapkan Label untuk setiap TD */
+    .riwayat-table td:nth-of-type(1)::before { content: "ID Pesanan:"; }
+    .riwayat-table td:nth-of-type(2)::before { content: "Tanggal Pesan:"; }
+    .riwayat-table td:nth-of-type(3)::before { content: "Total Bayar:"; }
+    .riwayat-table td:nth-of-type(4)::before { content: "Status:"; }
+    .riwayat-table td:nth-of-type(5)::before { content: "Aksi:"; }
+    
+    .riwayat-table td:last-child { 
+        text-align: left; 
+        padding-left: 15px;
+        padding-top: 15px; 
+        padding-bottom: 10px;
+    }
+    .riwayat-table td:last-child::before { content: ""; } 
+}

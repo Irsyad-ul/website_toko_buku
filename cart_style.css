@@ -1,0 +1,230 @@
+:root {
+    --primary-color: #3498db; /* Biru Cerah (Action Button) */
+    --secondary-color: #2c3e50; /* Biru Tua/Gelap (Sidebar) */
+    --accent-color: #4cd3c2; /* Hijau muda/Tosca (Logo/Active Sidebar) */
+    --bg-light: #f4f6f9; /* Latar belakang konten */
+    --text-color: #343a40;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --danger-color: #e74c3c;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-light); 
+    color: var(--text-color);
+    display: flex; /* Layout utama: Sidebar dan Konten */
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-content {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* -------------------- 1. SIDEBAR (NAVIGASI KIRI) -------------------- */
+
+.sidebar {
+    width: 260px; /* Sedikit lebih lebar */
+    background-color: var(--secondary-color);
+    color: white;
+    height: 100vh;
+    padding: 20px 0; /* Padding vertikal */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: sticky; /* Agar tetap di tempat saat konten panjang */
+    top: 0;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+    text-align: center;
+    padding: 0 20px;
+    letter-spacing: 1px; /* Sedikit jarak antar huruf */
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #3d556e;
+}
+
+.profile-img {
+    width: 80px; /* Lebih besar */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 4px solid var(--accent-color); /* Border warna accent */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile strong {
+    display: block;
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+}
+.user-profile small {
+    display: block;
+    color: #bdc3c7;
+    font-size: 0.85em;
+}
+
+/* Menu Sidebar */
+.sidebar-menu {
+    list-style: none;
+    padding: 0 15px; /* Padding di sekitar menu */
+}
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    color: #bdc3c7;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 8px; /* Jarak antar item menu */
+    border-radius: 8px; /* Sudut lebih membulat */
+    transition: all 0.3s ease;
+}
+.sidebar-menu li a i {
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+.sidebar-menu li a:hover {
+    background-color: #34495e;
+    color: #fff;
+    transform: translateX(3px); /* Efek pergeseran ringan */
+}
+.sidebar-menu li a.active {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.logout-sidebar {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #3d556e;
+}
+.logout-sidebar a {
+    color: #ff6b6b; /* Warna merah yang lebih lembut */
+    font-weight: 600;
+}
+.logout-sidebar a:hover {
+    background-color: #34495e;
+    color: #fff;
+}
+
+
+
+/* -------------------- 4. KERANJANG BELANJA (CART STYLING) -------------------- */
+
+.cart-wrapper {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+.back-link {
+    display: inline-block; color: var(--primary-color);
+    text-decoration: none; font-weight: 600; margin-bottom: 20px;
+    transition: color 0.3s;
+}
+/* Flash Messages Styling (di dalam main-content) */
+.main-content p[style*="color: green"], .main-content p[style*="color: red"] { /* ... styling flash messages ... */ }
+
+
+/* Tabel Keranjang */
+.cart-table {
+    width: 100%; border-collapse: separate; border-spacing: 0 10px; margin: 25px 0;
+}
+.cart-table thead th {
+    background-color: var(--bg-light); color: var(--secondary-color);
+    font-weight: 600; padding: 15px 10px; text-align: left;
+    border-bottom: 2px solid var(--border-color);
+}
+.cart-table tbody tr {
+    background-color: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.3s;
+}
+.cart-table tbody tr:hover { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); }
+.cart-table td { padding: 15px 10px; vertical-align: middle; }
+
+/* Hapus Item */
+.remove-item a {
+    color: var(--danger-color); font-size: 0.85em; margin-top: 5px;
+    display: block; text-decoration: none;
+}
+.remove-item a:hover { text-decoration: underline; }
+
+/* Input Kuantitas */
+.qty-input {
+    width: 60px; padding: 8px; border: 1px solid var(--border-color);
+    border-radius: 6px; text-align: center;
+}
+
+/* Footer Tabel (Total) */
+.total-label {
+    text-align: right; font-size: 1.2em; font-weight: 600; padding-top: 20px;
+}
+.total-amount {
+    font-size: 1.4em; font-weight: 700; color: var(--primary-color); padding-top: 20px;
+}
+
+/* Grup Tombol Aksi */
+.btn-group {
+    display: flex; justify-content: flex-end; gap: 15px;
+    margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);
+}
+
+/* Tombol Styling */
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 12px 25px; border: none; border-radius: 8px;
+    font-weight: 600; cursor: pointer; text-decoration: none;
+    text-align: center; transition: all 0.3s ease;
+}
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: #2980b9; transform: translateY(-2px); }
+.btn-secondary { background-color: #95a5a6; color: white; }
+.btn-secondary:hover { background-color: #7f8c8d; transform: translateY(-2px); }
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: #c0392b; transform: translateY(-2px); }
+
+
+/* -------------------- 5. RESPONSIVITAS -------------------- */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main-content { padding: 15px; }
+    .cart-wrapper { padding: 20px; }
+    
+    /* Tabel Responsif (Card List View) */
+    .cart-table, .cart-table tbody, .cart-table tr, .cart-table td { display: block; width: 100%; }
+    .cart-table thead { display: none; }
+    .cart-table tr { margin-bottom: 15px; padding: 10px 0; border-radius: 8px; }
+    .cart-table td {
+        text-align: right; padding-left: 50%; position: relative;
+    }
+    .cart-table td::before {
+        content: attr(data-label); position: absolute; left: 10px; width: 45%;
+        font-weight: 600; text-align: left; color: var(--secondary-color);
+    }
+    .total-label { text-align: left; padding-left: 10px; }
+    .total-amount { text-align: right; padding-right: 10px; }
+    .btn-group { flex-direction: column; gap: 10px; }
+    .btn-primary, .btn-secondary, .btn-danger { width: 100%; }
+}

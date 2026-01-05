@@ -1,0 +1,257 @@
+/* ====================================================== */
+/* -------------- STYLING UMUM & LAYOUT BARU -------------- */
+/* ====================================================== */
+
+:root {
+    --primary-color: #007bff; /* Biru cerah, bisa diganti menjadi #4cd3c2 jika ingin sesuai logo */
+    --secondary-color: #2c3e50; /* Biru tua/abu-abu gelap */
+    --accent-color: #4cd3c2; /* Hijau muda/Tosca (Logo/Active Sidebar) */
+    --bg-light: #f4f6f9; /* Latar belakang yang lebih terang */
+    --text-color: #343a40;
+    --card-bg: #ffffff;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-light); 
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh; /* Memastikan body minimal setinggi viewport */
+}
+
+.container {
+    padding: 30px; 
+    flex-grow: 1;
+    background: var(--bg-light);
+}
+
+/* -------------------- 1. SIDEBAR (NAVIGASI KIRI) -------------------- */
+
+.sidebar {
+    width: 260px; /* Sedikit lebih lebar */
+    background-color: var(--secondary-color);
+    color: white;
+    height: 100vh;
+    padding: 20px 0; /* Padding vertikal */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: sticky; /* Agar tetap di tempat saat konten panjang */
+    top: 0;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+    text-align: center;
+    padding: 0 20px;
+    letter-spacing: 1px; /* Sedikit jarak antar huruf */
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #3d556e;
+}
+
+.profile-img {
+    width: 80px; /* Lebih besar */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 4px solid var(--accent-color); /* Border warna accent */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile strong {
+    display: block;
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+}
+.user-profile small {
+    display: block;
+    color: #bdc3c7;
+    font-size: 0.85em;
+}
+
+/* Menu Sidebar */
+.sidebar-menu {
+    list-style: none;
+    padding: 0 15px; /* Padding di sekitar menu */
+}
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    color: #bdc3c7;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 8px; /* Jarak antar item menu */
+    border-radius: 8px; /* Sudut lebih membulat */
+    transition: all 0.3s ease;
+}
+.sidebar-menu li a i {
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+.sidebar-menu li a:hover {
+    background-color: #34495e;
+    color: #fff;
+    transform: translateX(3px); /* Efek pergeseran ringan */
+}
+.sidebar-menu li a.active {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.logout-sidebar {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #3d556e;
+}
+.logout-sidebar a {
+    color: #ff6b6b; /* Warna merah yang lebih lembut */
+    font-weight: 600;
+}
+.logout-sidebar a:hover {
+    background-color: #34495e;
+    color: #fff;
+}
+
+
+/* -------------------- 2. CONTENT WRAPPER (HEADER & MAIN) -------------------- */
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-header {
+    background: var(--card-bg);
+    padding: 20px 30px; /* Padding lebih besar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Bayangan yang lebih jelas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Header tetap di atas */
+    top: 0;
+    z-index: 10;
+}
+.content-header h2 {
+    margin: 0;
+    color: var(--text-color);
+    font-weight: 700; /* Lebih tebal */
+    font-size: 1.8em;
+}
+
+.main-content {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Dashboard Menu (Cards) */
+.dashboard-menu {
+    display: grid;
+    /* Membuat kolom responsif, min 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; /* Jarak antar kartu lebih besar */
+    padding: 0;
+    list-style: none;
+}
+.dashboard-menu a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Tinggi seragam untuk kesan bersih */
+    padding: 20px;
+    background-color: var(--card-bg);
+    border: none; /* Hapus border */
+    border-radius: 12px; /* Lebih membulat */
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transisi bouncy modern */
+    box-shadow: var(--shadow-light); /* Bayangan halus */
+}
+.dashboard-menu a:hover {
+    background-color: var(--primary-color);
+    color: white; /* Teks putih saat hover */
+    transform: translateY(-5px) scale(1.02); /* Lebih menarik */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.dashboard-menu a i {
+    font-size: 3em; /* Icon lebih besar */
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    transition: color 0.4s;
+}
+.dashboard-menu a:hover i {
+    color: white; /* Icon putih saat hover */
+}
+.dashboard-menu a span {
+    font-size: 1.1em;
+}
+
+/* Card Styling Modern */
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    margin-bottom: 25px; /* Jarak antar card */
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    border-left: 5px solid var(--accent-color); /* Garis aksen modern */
+}
+.card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.sidebar-menu li a.cart-link {
+    position: relative; 
+    /* Hilangkan properti justify-content: space-between jika ada, 
+       karena kita akan memosisikan badge secara absolut. */
+    display: flex; /* Untuk menyejajarkan ikon dan teks */
+    gap: 10px;
+}
+
+/* 2. Styling dan Positioning Badge Merah */
+.badge-icon-cart {
+    /* POSISI MUTLAK/ABSOLUTE */
+    position: absolute;
+    top: 5px;   /* Angkat ke atas */
+    left: 25px; /* Sesuaikan posisi agar menempel di atas ikon */
+    
+    /* STYLING VISUAL */
+    background-color: #dc3545; /* Merah */
+    color: white;
+    font-size: 0.7em; /* Ukuran lebih kecil */
+    font-weight: 700;
+    line-height: 1;
+    
+    /* Bentuk Lingkaran */
+    border-radius: 50%;
+    padding: 3px 6px;
+    min-width: 8px; /* Pastikan angka dua digit terlihat */
+    text-align: center;
+    border: 1px solid #ffffff; /* Border putih tipis agar menonjol */
+}
+
+/* 3. Menghilangkan margin pada teks menu agar tidak terdorong badge */
+.sidebar-menu li a span {
+    margin-right: 0; /* Pastikan teks tidak memiliki margin berlebih */
+}

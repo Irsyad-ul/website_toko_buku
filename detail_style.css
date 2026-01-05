@@ -1,0 +1,158 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f6f9; /* Light, soft background */
+    color: #333;
+}
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.back-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Book Layout (Flexbox) */
+.book-detail-grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start; /* Align top */
+}
+
+/* Book Image Placeholder (Jika Anda menambahkan gambar buku nanti) */
+.book-image {
+    width: 250px;
+    height: 350px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+/* Book Info Section */
+.book-info {
+    flex-grow: 1;
+}
+.book-info h1 {
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Metadata (Penulis, Penerbit, dll.) */
+.metadata p {
+    margin: 8px 0;
+    font-size: 1.05em;
+}
+.metadata strong {
+    color: #555;
+    font-weight: 600;
+}
+
+/* Price and Stock */
+.price-stock-area {
+    margin: 25px 0;
+    padding: 15px;
+    border: 1px solid #cce5ff;
+    background-color: #e9f5ff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.harga {
+    color: #28a745; /* Harga Hijau */
+    font-weight: 700;
+    font-size: 2em;
+    margin: 0;
+}
+.stock {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 600;
+}
+.stock-empty {
+    color: #dc3545; /* Merah untuk stok kosong */
+    font-weight: 700;
+}
+
+/* Description */
+.description-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.description-section h3 {
+    color: #343a40;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.description-section p {
+    line-height: 1.8;
+}
+
+/* Buy Button */
+.btn-beli {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background: #ffc107; /* Kuning cerah */
+    color: #333;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.btn-beli:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .book-detail-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .book-image {
+        width: 100%;
+        height: 300px;
+    }
+    .price-stock-area {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .harga {
+        font-size: 1.8em;
+    }
+}
